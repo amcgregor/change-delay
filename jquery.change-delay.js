@@ -10,7 +10,8 @@
         var settings = $.extend({
             initial: 1000,  // initial delay value of one second
             highlight: true,  // when entering a field, select its contents
-            minimum: 2  // don't bother if the field has fewer than this many characters
+            minimum: 500, // minimum wait time
+            threshold: 2  // don't bother if the field has fewer than this many characters
         }, options);
         
         function init(element, self) {
@@ -25,7 +26,7 @@
             function handler() {
                 lastChange = 0;
                 var nvalue = self.val();
-                if ( nvalue.length < settings.minimum || nvalue == value ) return;
+                if ( nvalue.length < settings.threshold || nvalue == value ) return;
                 self.trigger('commit', [nvalue]);
                 value = nvalue;
             }
@@ -43,9 +44,9 @@
                 }
                 
                 var t = Date.now();
-                delay = (delay + (t - lastChange)) / 2;
+                delay = (delay + (t - lastChange) * 2) / 2;
                 lastChange = t;
-                timeout = setTimeout(handler, delay * 2)
+                timeout = setTimeout(handler, Math.max(settings.minimum, delay * 2))
             }
             
             self.on('keyup', check);

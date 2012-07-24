@@ -1,0 +1,38 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+		<title>Example — Change-Delay.js</title>
+		
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<body>
+		<header>
+			<h1>Change-Delay.js</h1>
+		</header>
+		
+		<div role="main">
+			<h2>Sample Input</h2>
+			<input type="text" id="test1">
+			
+			<h2>Committed Values</h2>
+			<ul id="values1"></ul>
+		</div>
+		
+		<footer>
+			Copyright © 2012 Alice Bevan-McGregor.  Released under the MIT license.
+		</footer>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="jquery.change-delay.js"></script>
+		<script>
+			$(function(){
+				$('#test1').delay(function(event, value){
+					$('<li>' + value + '</li>').appendTo('#values1');
+				});
+			});
+		</script>
+	</body>
+</html>
