@@ -16,8 +16,8 @@
         }, options);
         
         function init(element, self) {
-            // Only handle <input type="text"> and <textarea> tags.
-            if ( element.type.toUpperCase() != "TEXT" && element.nodeName.toUpperCase() != "TEXTAREA" ) return;
+            // Only handle contenteditable, <input type="text"> and <textarea> tags.
+            if ( !element.attributes.contenteditable && element.type.toUpperCase() != "TEXT" && element.nodeName.toUpperCase() != "TEXTAREA" ) return;
             
             var timeout,
                 lastChange = 0,
