@@ -1,6 +1,6 @@
 (function($) {
     
-    $.fn.delay = function(callback, options) {
+    $.fn.changeDelay = function(callback, options) {
         if ( callback !== undefined ) {
             if ( $.isFunction(callback) ) this.on('commit', callback);
             else if ( options === undefined ) options = callback;
